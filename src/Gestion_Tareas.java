@@ -1,5 +1,6 @@
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Scanner;
 import java.util.Stack;
 
 public class Gestion_Tareas {
@@ -59,6 +60,56 @@ public class Gestion_Tareas {
     }
 
     public static void main(String[] args){
-        System.out.println("Hello, World!");
+        Scanner scanner = new Scanner(System.in);
+        Gestion_Tareas sistem = new Gestion_Tareas();
+
+        while (true) {
+            System.out.println("\n==== Gestor de Tareas                 =");
+            System.out.println("==== 1. Agregar tarea                 =");
+            System.out.println("==== 2. Marcar tarea como completada  =");
+            System.out.println("==== 3. Eliminar Tarea                =");
+            System.out.println("==== 4. Ver tareas pendientes         =");
+            System.out.println("==== 5. Ver proxima tarea             =");
+            System.out.println("==== 6. Salir                         =");
+            System.out.println("=======================================");
+            System.out.println("Seleccione una opcion");    
+        
+            int opcion = scanner.nextInt();
+            scanner.nextLine();//consumir el salto de linea
+
+            switch (opcion) {
+                case 1:
+                    System.out.print("Ingrese la tarea a agregar: ");
+                    String nueva_Tarea = scanner.nextLine();
+                    sistem.Agregar_Tarea(nueva_Tarea);
+                    break;
+                
+                    case 2:
+                    sistem.Marcar_TareaComple();
+                    break;
+
+                    case 3:
+                    System.out.println("Ingrese la tarea a eliminar: ");
+                    String Tarea_Eliminada = scanner.nextLine();
+                    sistem.Eliminar_Tarea(Tarea_Eliminada);
+                    break;
+
+                    case 4:
+                    sistem.Ver_TareasPendi();
+                    break;
+
+                    case 5:
+                    sistem.ver_ProximaTarea();
+                    break;
+
+                    case 6:
+                    System.out.println("Gracias por usar el programa");
+                    scanner.close();
+                    return;
+
+                default:
+                    System.out.println("Opcion no valida, vuelve a ingresar");
+            }
+        }
     }
 }
